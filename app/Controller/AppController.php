@@ -18,7 +18,8 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+use \Firebase\JWT\JWT;
+use \Carbon\Carbon;
 App::uses('Controller', 'Controller');
 
 /**
@@ -32,60 +33,22 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Package');
-
-
-	public function login($user_id, $token){
-		$this->autoRender = false;
-		App::uses('AuthComponent', 'Controller/Component');
-		$users = array();
-		$users = $this->Package->query("SELECT username, password FROM users AS User where id = " . $user_id);
-
-		if(count($users) > 0){
-			$user = $users[0];
-			$tokenGenerated = AuthComponent::password($user['User']['username'] + $user['User']['password']);
-			if($token === $tokenGenerated){
-				return json_encode(array('status' => 'OK'));
-			} else {
-				return json_encode(array('status' => 'ERROR_WRONG_TOKEN', 'message' => 'El token es incorrento'));
-			}
-
-		} else {
-			return json_encode(array('status' => 'ERROR_USER_NOT_FOUD', 'message' => 'Número de usuario no es correcto'));
+	public $components = array('RequestHandler');
+	public $uses = array('User');
+	public function beforeFilter($option = array()){
+		$this->disableCache();
+		$token = $this->request->header('TP-AUTH');
+		if(!$token) {
+			throw new BadRequestException('Falta token.');
+		}
+		try {
+			$decoded_token = JWT::decode($token, 'ZOlG*IZn)2(hDeWY%kY1r5)pPDmKM&7f', array('HS256'));
+		} catch (\Firebase\JWT\ExpiredException $e){
+			throw new UnauthorizedException('Token expirado.');
+		} catch (\Exception $e) {
+			throw new InternalErrorException($e->getMessage());
 		}
 	}
 
-	public function accesTokenUser($user_id){
-		$this->autoRender = false;
-		App::uses('AuthComponent', 'Controller/Component');
-		$users = array();
-		$users = $this->Package->query("SELECT username, password FROM users AS User where id = " . $user_id);
 
-		if(count($users) > 0){
-			$user = $users[0];
-			$tokenGenerated = AuthComponent::password($user['User']['username'] + $user['User']['password']);
-			return json_encode(array('status' => 'OK', 'token' => $tokenGenerated));
-
-		} else {
-			return json_encode(array('status' => 'ERROR_USER_NOT_FOUD', 'message' => 'Número de usuario no es correcto'));
-		}
-	}
-
-	public $components = array(
-        'Auth' => array(
-            'className' => 'StatelessAuth.StatelessAuth',
-            'authenticate' => array(
-                'className' => 'StatelessAuth.Token',
-
-                // Additional examples:
-
-                // 'userModel' => 'User',
-                // 'tokenField' => 'token',
-                // 'recursive' => -1,
-                // 'contain' => array('Permission'),
-                // 'conditions' => array('User.is_active' => true),
-                // 'passwordHasher' => 'Blowfish',
-            ),
-        )
-    );
 }

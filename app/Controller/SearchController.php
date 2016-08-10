@@ -6,15 +6,10 @@ class SearchController extends AppController {
 
 	public $uses = array('Package');
 
-	public function getPackageList($user_id, $token, $origin, $destiny, $month, $year, $adult, $child, $config = null) {
-		if($this->request->is('get')){
+	public function getPackageList() {
+		if($this->request->is('post')){
 			$this->autoRender = false;
-			$loginResponse = json_decode($this->login($user_id, $token));
-			if($loginResponse['status'] == 'OK'){
-				//Chequeo de disponibilidad
-			} else {
-				return $loginResponse;
-			}
+			echo "hola mundo";
 		} else {
 			echo json_encode(array('status' => 'ERROR_TYPE_REQUEST', 'message' => 'Esta accediendo de manera equivocada al servidor'));
 		}

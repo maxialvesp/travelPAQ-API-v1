@@ -109,5 +109,4 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
-CakePlugin::load('StatelessAuth', array('bootstrap' => true));
-CakePlugin::loadAll();
+require_once '../../vendor/autoload.php'; 

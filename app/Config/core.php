@@ -221,16 +221,15 @@
 	Configure::write('Session', array(
 		'defaults' => 'php'
 	));
-
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DKRrnjb0qykalrnx2grVoUubWwvnia2G0FgaC9mi');
+	Configure::write('Security.salt', 'DYhG93b0qyJfIxxx2guVoUubWwvniR2G0FgaC9mi');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '65853201576453542495369348527');
+	Configure::write('Security.cipherSeed', '76859309666453542496749683645');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -270,7 +269,7 @@
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+      date_default_timezone_set('America/Argentina/San_Juan');
 
 /**
  * `Config.timezone` is available in which you can set users' timezone string.

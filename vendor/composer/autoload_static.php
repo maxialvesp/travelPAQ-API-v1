@@ -18,6 +18,7 @@ class ComposerStaticInitffc93e6a6716ef36b312afd06e0834fe
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Symfony\\Component\\Translation\\' => 30,
         ),
         'F' => 
         array (
@@ -26,6 +27,7 @@ class ComposerStaticInitffc93e6a6716ef36b312afd06e0834fe
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
+            'Carbon\\' => 7,
         ),
     );
 
@@ -42,6 +44,10 @@ class ComposerStaticInitffc93e6a6716ef36b312afd06e0834fe
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
@@ -49,6 +55,10 @@ class ComposerStaticInitffc93e6a6716ef36b312afd06e0834fe
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+        'Carbon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
     );
 

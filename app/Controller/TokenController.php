@@ -24,7 +24,7 @@ class TokenController extends Controller {
 		$token = array(
 		    "i" => $user['User']['id'],
 		);
-		$encoded_token = JWT::encode($token, 'unacualquiera');
+		$encoded_token = JWT::encode($token, 'rhrdn5BxRpgJRqawI5iQ@WP3%1XM_doe');
 		if($user){
 			$hash = AuthComponent::password($password);
 			if($hash == $user['User']['password']){

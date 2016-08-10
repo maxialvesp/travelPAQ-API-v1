@@ -42,7 +42,7 @@ class AppController extends Controller {
 			throw new BadRequestException('Falta token.');
 		}
 		try {
-			$decoded_token = JWT::decode($token, 'unacualquiera', array('HS256'));
+			$decoded_token = JWT::decode($token, 'ZOlG*IZn)2(hDeWY%kY1r5)pPDmKM&7f', array('HS256'));
 		} catch (\Firebase\JWT\ExpiredException $e){
 			throw new UnauthorizedException('Token expirado.');
 		} catch (\Exception $e) {

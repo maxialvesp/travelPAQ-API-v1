@@ -7,8 +7,8 @@ class SearchController extends AppController {
 	public $uses = array('Package');
 
 	public function getPackageList() {
+		$this->autoRender = false;
 		if($this->request->is('post')){
-			$this->autoRender = false;
 			echo "hola mundo";
 		} else {
 			echo json_encode(array('status' => 'ERROR_TYPE_REQUEST', 'message' => 'Esta accediendo de manera equivocada al servidor'));

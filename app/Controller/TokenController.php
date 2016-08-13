@@ -9,7 +9,7 @@ class TokenController extends Controller {
 
 	public function create_token($user_id,$pass){
 		$this->autoRender = false;
-		if('rhrdn5BxRpgJRqawI5iQ@WP3%1XM_doe' != $pass)
+		if('rhrdn5BxRpgJRqawI5iQ@WP31XM_doe' != $pass)
 		{
 			die();
 		}

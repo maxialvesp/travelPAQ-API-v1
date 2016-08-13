@@ -3,7 +3,7 @@ tp.service('TravelPAQ', function($http) {
 	var self = this;
 	self.token = '<?=$token;?>';
 	self.get_hola_mundo = function(params, success, error){
-		$http.post("<?=FULL_BASE_URL.Router::url('/search/getPackageList');?>", params, {
+		$http.post("<?=FULL_BASE_URL.Router::url('/scripts/prueba');?>", params, {
 			headers:  {
 		        "TP-AUTH" : self.token
 		    }
